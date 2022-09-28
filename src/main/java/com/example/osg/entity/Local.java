@@ -1,61 +1,58 @@
 package com.example.osg.entity;
 
-import java.util.List;
-
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Store")
-public class Store {
+@Table(name = "local")
+public class Local {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
 	private String name;
-	private String info;
-	
-	@Column
+	private String address;
+	private String phone;
 	private String img;
-
-	@OneToMany(mappedBy = "store")
-	private List<Local> localities;
 	
+	@ManyToOne
+	private Store store;
+
 	public Integer getId() {
 		return id;
 	}
-	
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	
+
 	public String getName() {
 		return name;
 	}
-	
+
 	public void setName(String name) {
 		this.name = name;
 	}
-	
-	public String getInfo() {
-		return info;
-	}
-	
-	public void setInfo(String info) {
-		this.info = info;
+
+	public String getAddress() {
+		return address;
 	}
 
-	public List<Local> getLocalities() {
-		return localities;
+	public void setAddress(String address) {
+		this.address = address;
 	}
 
-	public void setLocalities(List<Local> localities) {
-		this.localities = localities;
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 
 	public String getImg() {
@@ -65,5 +62,12 @@ public class Store {
 	public void setImg(String img) {
 		this.img = img;
 	}
-	
+
+	public Store getStore() {
+		return store;
+	}
+
+	public void setStore(Store store) {
+		this.store = store;
+	}
 }
