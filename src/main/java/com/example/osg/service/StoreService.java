@@ -29,6 +29,11 @@ public class StoreService {
 		return repo.findById(store_id).get();
 	}
 	
+	public String getStoreName(Integer store_id) {
+		Store store = repo.findById(store_id).get();
+		return store.getName();
+	}
+	
 	public void deleteStore(Integer store_id) {
 		repo.deleteById(store_id);
 	}

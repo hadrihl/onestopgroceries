@@ -15,7 +15,6 @@ public interface StoreRepository extends JpaRepository<Store, Integer> {
 	
 	@Query(value = "SELECT s FROM Store s WHERE s.name LIKE '%' || :keyword || '%'"
 			+ " OR s.info LIKE '%' || :keyword || '%'"
-			+ " OR s.address LIKE '%' || :keyword || '%'")
+			)
 	public List<Store> search(@Param("keyword") String keyword);
-
 }

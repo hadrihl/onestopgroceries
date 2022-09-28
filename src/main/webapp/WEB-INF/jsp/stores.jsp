@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>One Stop Groceries</title>
+    <title>One Stop Groceries | Stores</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
   </head>
   <body>
@@ -27,7 +27,7 @@
                         <a href="#" class="nav-link">About</a>
                     </li>
                     <li class="nav-item active">
-                        <a href="/stores" class="nav-link">LocateMe</a>
+                        <a href="/stores" class="nav-link">Stores</a>
                     </li>
                 </ul>
         
@@ -80,9 +80,7 @@
                 <div class="card-body">
                   <h5 class="card-title">${store.name}</h5>
                   <p class="card-text"><i class="fa-solid fa-tag"></i> ${store.info}</p>
-                  <p class="card-text"><i class="fa-solid fa-phone"></i> ${store.phone}</p>
-                  <p class="card-text"><i class="fa-solid fa-location-dot"></i> ${store.address}</p>
-                  <a href="#" class="btn btn-light"><i class="fa-solid fa-store"></i> View Shop</a>
+                  <a href="/localities?store_id=${store.id}" class="btn btn-light"><i class="fa-solid fa-store"></i> View Localities</a>
                 </div>
                 <div class="card-footer">
                   <small class="text-muted">Last updated 3 mins ago</small>

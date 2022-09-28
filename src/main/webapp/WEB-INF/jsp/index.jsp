@@ -27,7 +27,7 @@
                         <a href="#" class="nav-link">About</a>
                     </li>
                     <li class="nav-item active">
-                        <a href="/stores" class="nav-link">LocateMe</a>
+                        <a href="/stores" class="nav-link">Stores</a>
                     </li>
                 </ul>
   		</div>

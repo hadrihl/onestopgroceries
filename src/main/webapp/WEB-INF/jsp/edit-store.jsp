@@ -21,17 +21,24 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item active">
-                        <a href="#" class="nav-link">Home</a>
+                        <a href="/" class="nav-link">Home</a>
                     </li>
                     <li class="nav-item active">
                         <a href="#" class="nav-link">About</a>
                     </li>
                     <li class="nav-item active">
-                        <a href="/stores" class="nav-link">LocateMe</a>
+                        <a href="/stores" class="nav-link">Stores</a>
                     </li>
                 </ul>
   		</div>
- 
+  		
+  		<button type="button" class="btn btn-outline-warning me-2" style="border: none;">
+            	@hadrihl<c:out value="${pageContext.request.remoteUser}"/>
+        </button>
+        
+        <form action="/logout" method="post">
+        	<button type="submit" class="btn btn-secondary">Sign out</button>
+        </form>
   	</nav>
  
     <!-- main section -->
@@ -39,7 +46,7 @@
         <section class="py-4 text-center container">
             <div class="row mt-5">
                 <div class="col-lg-9 mx-auto">
-                    <h2 class="fw-light">Add New Store</h2>
+                    <h2 class="fw-light">Edit Store</h2>
                 </div>
             </div>
         </section>
@@ -47,31 +54,75 @@
 
     <div class="container" style="width: 40rem; margin: auto;">
       <div class="mb-4">
-        <h5>Basic Information</h5>
+      	<div class="row">
+      		<div class="col-lg-10">
+        	<h5>Basic Information</h5>
+        	</div>
+       	
+       		<div class="col-lg-2 me-auto">
+
+<button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#myModal">
+    Delete
+  </button>
+
+<!-- The Modal -->
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">${store.name}</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        Are you sure you want delete the store?
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+        <a href="/delete-store?store_id=${store.id}" class="btn btn-danger">Delete</a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+       		</div>
+      	</div>
+        
       </div>
       
-      <form action="/add-store" method="post">
+      <form class="form-group" action="/update-store?store_id=${store.id}" method="post" modelAttribute="store">
+      
+      	<div class="mb-3">
+      		<label class="form-label">Store ID: </label>
+      		<input class="form-control" name="store_id" value="${store.id}" aria-label="Store ID" readonly="true" />
+      	</div>
 
         <div class="mb-3">
           <label class="form-label">*Store name: </label>
-          <input type="text" class="form-control" name="name" id="name" aria-label="Store name" required />
+          <input class="form-control" name="name" id="store_name" value="${store.name}" aria-label="Store name" required />
         </div>
 
         <div class="mb-3">
           <label class="form-label">*Store description: </label>
-          <input type="text" class="form-control" name="info" id="info" aria-label="Store description" required />
+          <input class="form-control" name="info" id="store_desc" value="${store.info}" aria-label="Store description" required />
         </div>
-
-      <div class="mb-3">
-        <label class="form-label" for="customFile">Store photo:</label>
-        <input type="file" name="img" class="form-control" id="customFile" required />
-      </div>
-
-      <div class="py-5">
-        <a href="/stores" class="btn btn-danger">Cancel</a>
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </div>
-     </form>
+        
+        <div class="mb-3">
+        	<label class="form-label" for="customFile">Store photo</label>
+        	<input type="file" name="img" class="form-control" id="customFile" value="assets/img/${store.img}" />
+      	</div>
+      	
+      	<div class="py-5">
+        	<a href="/stores" class="btn btn-danger">Cancel</a>
+        	<button type="submit" class="btn btn-success">Update</button>
+      	</div>
+      </form>
       
     </div>
 
