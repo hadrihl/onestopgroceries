@@ -97,7 +97,9 @@
       </div>
       
       <form class="form-group" action="/update-store?store_id=${store.id}" method="post" modelAttribute="store">
-      
+      <input type="hidden" name="${_csrf.parameterName}"
+				value="${_csrf.token}" />
+				
       	<div class="mb-3">
       		<label class="form-label">Store ID: </label>
       		<input class="form-control" name="store_id" value="${store.id}" aria-label="Store ID" readonly="true" />

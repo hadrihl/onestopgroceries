@@ -30,8 +30,17 @@
                         <a href="/stores" class="nav-link">Stores</a>
                     </li>
                 </ul>
-        
   		</div>
+  		
+  		<button type="button" class="btn btn-outline-primary me-2" style="border: none;">
+            @<c:out value="${pageContext.request.remoteUser}"/>
+        </button>
+            
+        <form action="/logout" method="post">
+            <input type="hidden" name="${_csrf.parameterName}"
+				value="${_csrf.token}" />
+            <button type="submit" class="btn btn-danger">Logout</button>
+        </form>
   	</nav>
  
     <!-- main section -->

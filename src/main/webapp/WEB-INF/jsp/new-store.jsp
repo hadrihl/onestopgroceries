@@ -51,7 +51,9 @@
       </div>
       
       <form action="/add-store" method="post">
-
+		<input type="hidden" name="${_csrf.parameterName}"
+				value="${_csrf.token}" />
+				
         <div class="mb-3">
           <label class="form-label">*Store name: </label>
           <input type="text" class="form-control" name="name" id="name" aria-label="Store name" required />

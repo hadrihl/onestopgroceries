@@ -32,6 +32,16 @@
                 </ul>
         
   		</div>
+  		
+  		<button type="button" class="btn btn-outline-primary me-2" style="border: none;">
+            @<c:out value="${pageContext.request.remoteUser}"/>
+        </button>
+            
+        <form action="/logout" method="post">
+            <input type="hidden" name="${_csrf.parameterName}"
+				value="${_csrf.token}" />
+            <button type="submit" class="btn btn-danger">Logout</button>
+        </form>
   	</nav>
  
     <!-- main section -->
@@ -74,7 +84,9 @@
   <div class="card card-body mb-3" style="width: 40rem;">
   
   	<form action="/add-local?store_id=${store.id}" method="post">
-        
+    <input type="hidden" name="${_csrf.parameterName}"
+				value="${_csrf.token}" />
+				
   		<div class="mb-3">
           <label class="form-label">*Local branch name: </label>
           <input type="text" class="form-control" name="name" id="name" value="${store.name} @ " aria-label="Store name" required />
