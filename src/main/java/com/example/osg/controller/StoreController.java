@@ -30,6 +30,11 @@ public class StoreController {
 		return "index";
 	}
 	
+	@GetMapping("/about")
+	public String getAboutPage() {
+		return "about";
+	}
+	
 	// view list of stores page
 	@GetMapping("/stores")
 	public String getStoresPage(Model model) {
