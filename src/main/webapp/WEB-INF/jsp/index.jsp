@@ -31,6 +31,9 @@
                     </li>
                 </ul>
   		</div>
+  		
+        <a href="/signin" class="btn btn-primary">Sign In</a>
+
   	</nav>
  
     <!-- main section -->
