@@ -4,7 +4,7 @@ This project is part of the course Application Development and Processes (DSE205
 
 ## Frontend
 
-Latest frontend is kept here ![onestopgroceries-frontend](https://github.com/hadrihl/onestopgroceries-frontend)
+Latest frontend is kept here [onestopgroceries-frontend](https://github.com/hadrihl/onestopgroceries-frontend)
 
 ## Howto: Replicate & Run the Project
 
