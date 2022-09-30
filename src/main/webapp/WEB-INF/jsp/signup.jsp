@@ -32,6 +32,13 @@
                 <div class="form-group d-grid gap-2">
                     <button type="submit" class="btn btn-success w-100">Sign up with email</button>
                 </div>
+                
+                <c:if test="${error_string != null}">
+					<div class="alert alert-danger mt-3">
+						${error_string}
+					</div>
+				</c:if>
+                
                 <footer class="mt-5 text-muted">&copy; 2022. <a href="/">OneStopGroceries</a> portal.<br/>
                     Made with <i class="fa-solid fa-heart"></i> in Penang.<br/>
                     <i class="fa-brands fa-github"></i>
