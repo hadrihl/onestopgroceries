@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -33,28 +34,31 @@ public class UserController {
 	}
 	
 	@PostMapping("/process_signup")
-	public String register(@ModelAttribute("user") User user) {
+	public String register(Model model, @ModelAttribute("user") User user) {
 		
 		User existUser = userRepository.getUserByEmail(user.getEmail());
 		
-		if(existUser.getEmail() == user.getEmail()) {
-			System.err.println("User exists! Use different email.");
-			return "redirect:signup";
+		if(existUser == null) {
+			// set default role: VIEW_STORE
+			Role defaultRole = roleRepository.getRoleByName("VIEW_STORE");
+			user.setRoles(defaultRole);
+			
+			// hash the password
+			BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+			String encodedPassword = passwordEncoder.encode(user.getPassword());
+			user.setPassword(encodedPassword);
+			
+			// save user
+			userRepository.save(user);
+			
+			return "redirect:signin";
+			
 		} else {
-		
-		// set default role: VIEW_STORE
-		Role defaultRole = roleRepository.getRoleByName("VIEW_STORE");
-		user.setRoles(defaultRole);
-		
-		// hash the password
-		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-		String encodedPassword = passwordEncoder.encode(user.getPassword());
-		user.setPassword(encodedPassword);
-		
-		// save user
-		userRepository.save(user);
-		
-		return "redirect:signin";
+			String str = "User (" + user.getEmail() + ") exists! Use different email.";
+			model.addAttribute("error_string", str);
+			System.err.println(str);
+			
+			return "signup";
 		}
 	}
 

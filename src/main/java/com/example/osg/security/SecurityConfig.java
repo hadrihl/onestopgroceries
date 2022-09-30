@@ -42,6 +42,8 @@ public class SecurityConfig {
 			.authorizeRequests()
 				.antMatchers(HttpMethod.GET, "/").permitAll()
 				.antMatchers(HttpMethod.GET, "/about").permitAll()
+				.antMatchers(HttpMethod.GET, "/signup").permitAll()
+				.antMatchers(HttpMethod.POST, "/process_signup").permitAll()
 				.antMatchers(HttpMethod.GET, "/signin").permitAll()
 				.antMatchers(HttpMethod.GET, "/assets/**").permitAll()
 				.antMatchers(HttpMethod.GET, "/stores").hasAnyAuthority("VIEW_STORE", "ADD_STORE")
