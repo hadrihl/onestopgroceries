@@ -49,7 +49,7 @@
             <div class="row py-lg-5">
                 <div class="col-lg-9 mx-auto">
                     <h2 class="fw-light">Locate your nearest store!</h2>
-                    <p class="lead text-muted">We are a digital learing and talents platform with the mission to deliver growth for talents and enterprises in the digital economy.</p>
+                    <p class="lead text-muted">We are a digital learning and talents platform with the mission to deliver growth for talents and enterprises in the digital economy.</p>
                 	<a href="/stores"><i class="fa-solid fa-shop"></i> View Stores</a></t>
                     <a href="/new-store"><i class="fa-solid fa-plus"></i> Add Store</a>
                 </div>

@@ -41,11 +41,11 @@
             <div class="row py-lg-5">
                 <div class="col-lg-6 mx-auto">
                     <img class="img-fluid mb-3" src="assets/img/pexels-canva-studio-3194521.jpg" alt="welcome">
-                    <h2 class="fw-light mb-2">Rethinking the future of Store</h2>
+                    <h2 class="fw-light mb-2">Re-thinking the future of Store</h2>
                     <p class="lead text-muted">We provide a digital store e-commerce platform that focusing on 
                         creative store concepts and digital fulfillment of orders and support localities where you can choose 
                     from our wide variety of fresh and high-quality essentials for your everyday 
-                    kicthen and household needs.</p>
+                    kitchen and household needs.</p>
                    
                 </div>
             </div>

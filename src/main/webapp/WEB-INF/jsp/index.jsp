@@ -45,7 +45,7 @@
                     <h2 class="fw-light mb-2">Welcome to One Stop Groceries!</h2>
                     <p class="lead text-muted">We are a digital store platform where you can choose 
                     from our wide variety of fresh and high-quality essentials for your everyday 
-                    kicthen and household needs. Make it delivered to your doorstep!</p>
+                    kitchen and household needs. Make it delivered to your doorstep!</p>
                    
                 </div>
             </div>
