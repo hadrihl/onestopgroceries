@@ -57,6 +57,7 @@ public class SecurityConfig {
 				.antMatchers(HttpMethod.GET, "/edit-local").hasAuthority("ADD_STORE")
 				.antMatchers(HttpMethod.POST, "/update-local").hasAuthority("ADD_STORE")
 				.antMatchers(HttpMethod.POST, "/delete-local").hasAuthority("ADD_STORE")
+				.antMatchers(HttpMethod.GET, "/search").hasAnyAuthority("VIEW_STORE", "ADD_STORE")
 				.anyRequest().authenticated()
 				.and()
 			.formLogin()

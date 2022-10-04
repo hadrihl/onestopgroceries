@@ -132,4 +132,11 @@ public class StoreController {
 		return path;
 	}
 	
+	@GetMapping("/search")
+	public String searchPage(Model model, String keyword) {
+		List<Store> stores = storeService.search(keyword);
+		model.addAttribute("stores", stores);
+		return "search";
+	}
+	
 }
