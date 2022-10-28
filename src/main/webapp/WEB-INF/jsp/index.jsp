@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>  
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -32,8 +33,18 @@
                 </ul>
   		</div>
   		
-        <a href="/signin" class="btn btn-primary">Sign In</a>
-
+  		<c:if test="${empty pageContext.request.remoteUser}">
+        	<a href="/signin" class="btn btn-primary">Sign In</a>
+		</c:if>
+		<c:if test="${not empty pageContext.request.remoteUser}">
+			<button type="button" class="btn btn-outline-primary me-2" style="border: none;">
+            	@<c:out value="${pageContext.request.remoteUser}"/>
+        	</button>
+            
+        	<form:form action="/logout" method="post">
+            	<button type="submit" class="btn btn-danger">Logout</button>
+        	</form:form>
+		</c:if>
   	</nav>
  
     <!-- main section -->
