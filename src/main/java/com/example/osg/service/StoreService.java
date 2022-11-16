@@ -1,5 +1,7 @@
 package com.example.osg.service;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -22,6 +24,7 @@ public class StoreService {
 	}
 	
 	public void saveStore(Store store) {
+		store.setUpdatedOn(LocalDateTime.now());
 		repo.save(store);
 	}
 	
