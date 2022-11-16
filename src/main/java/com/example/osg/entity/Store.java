@@ -1,5 +1,7 @@
 package com.example.osg.entity;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -25,6 +27,9 @@ public class Store {
 
 	@OneToMany(mappedBy = "store")
 	private List<Local> localities;
+	
+	@Column
+	private LocalDateTime updatedOn;
 	
 	public Integer getId() {
 		return id;
@@ -65,5 +70,12 @@ public class Store {
 	public void setImg(String img) {
 		this.img = img;
 	}
-	
+
+	public LocalDateTime getUpdatedOn() {
+		return updatedOn;
+	}
+
+	public void setUpdatedOn(LocalDateTime updatedOn) {
+		this.updatedOn = updatedOn;
+	}
 }

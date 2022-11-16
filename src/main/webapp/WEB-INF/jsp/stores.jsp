@@ -96,7 +96,8 @@
                   <a href="/localities?store_id=${store.id}" class="btn btn-light"><i class="fa-solid fa-store"></i> View Localities</a>
                 </div>
                 <div class="card-footer">
-                  <small class="text-muted">Last updated 3 mins ago</small>
+                  <small class="text-muted">Last updated <time class="timeago" datetime="${store.updatedOn }"></time>
+                  </small>
                   <a href="/edit-store?store_id=${store.id}"><i class="fa-solid fa-pen-to-square"style="float: right; display: inline-block;"></i></a>
                 </div>
               </div>
@@ -114,5 +115,12 @@
     
     <script src="https://kit.fontawesome.com/e19fcdf015.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timeago/1.6.7/jquery.timeago.min.js" type="text/javascript"></script>
+    <script>
+    	jQuery(document).ready(function() {
+    	  jQuery("time.timeago").timeago();
+    	});
+    </script>
   </body>
 </html>
