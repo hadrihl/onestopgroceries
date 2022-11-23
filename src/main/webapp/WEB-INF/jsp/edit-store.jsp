@@ -33,7 +33,7 @@
   		</div>
   		
   		<button type="button" class="btn btn-outline-warning me-2" style="border: none;">
-            	@hadrihl<c:out value="${pageContext.request.remoteUser}"/>
+            	@<c:out value="${pageContext.request.remoteUser}"/>
         </button>
         
         <form action="/logout" method="post">
@@ -96,7 +96,7 @@
         
       </div>
       
-      <form class="form-group" action="/update-store?store_id=${store.id}" method="post" modelAttribute="store">
+      <form class="form-group" action="/update-store?store_id=${store.id}" method="post" modelAttribute="store" enctype="multipart/form-data">
       <input type="hidden" name="${_csrf.parameterName}"
 				value="${_csrf.token}" />
 				
@@ -117,7 +117,7 @@
         
         <div class="mb-3">
         	<label class="form-label" for="customFile">Store photo</label>
-        	<input type="file" name="img" class="form-control" id="customFile" value="assets/img/${store.img}" />
+        	<input type="file" name="imgFile" class="form-control" id="imgFile" value="${store.img}" />
       	</div>
       	
       	<div class="py-5">

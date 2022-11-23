@@ -78,4 +78,15 @@ public class UserRepositoryTest {
 		
 		assertThat(savedUser.getRoles().size()).isEqualTo(2);
 	}
+	
+	@Test
+	public void reset_password() {
+		User user = userRepository.getReferenceById(2);
+		
+		user.setPassword(new BCryptPasswordEncoder().encode("password"));
+		User savedUser = userRepository.save(user);
+		User existedUser = entityManager.find(User.class, savedUser.getId());
+		
+		assertThat(existedUser.getPassword()).isEqualTo(savedUser.getPassword());
+	}
 }

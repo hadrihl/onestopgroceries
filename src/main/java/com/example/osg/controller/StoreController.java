@@ -1,5 +1,6 @@
 package com.example.osg.controller;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartException;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.example.osg.entity.Local;
 import com.example.osg.entity.Store;
@@ -70,10 +73,12 @@ public class StoreController {
 
 	// save edit/update store
 	@PostMapping("/update-store")
-	public String saveStore(@ModelAttribute("store") Store store, @RequestParam Integer store_id) {
+	public String saveStore(@ModelAttribute("store") Store store, @RequestParam("store_id") Integer store_id,
+			@RequestParam("imgFile") MultipartFile file)
+		throws IOException {
 		store.setId(store_id);
-		storeService.saveStore(store);
-		
+
+		storeService.updateStoreInformation(store, file);
 		return "redirect:stores";
 	}
 	
