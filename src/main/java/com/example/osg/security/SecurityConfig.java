@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.csrf.CsrfAuthenticationStrategy;
 
 import com.example.osg.service.UserDetailsServiceImpl;
 
@@ -67,6 +68,7 @@ public class SecurityConfig {
 				.defaultSuccessUrl("/stores")
 				.permitAll()
 				.and()
+			.csrf().disable()
 			.logout()
 				.invalidateHttpSession(true)
 				.permitAll();
