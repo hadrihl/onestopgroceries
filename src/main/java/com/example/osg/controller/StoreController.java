@@ -126,7 +126,7 @@ public class StoreController {
 	@PostMapping("/update-local")
 	public String updateLocal(@ModelAttribute("local") Local local, @RequestParam Integer store_id) {
 		local.setStore(storeService.getStoreById(store_id));
-		local.setImg(storeService.getStoreById(store_id).getImg())
+		local.setImg(storeService.getStoreById(store_id).getImg());
 		localService.saveLocal(local);
 		
 		String path = "redirect:localities?store_id=" + store_id;
