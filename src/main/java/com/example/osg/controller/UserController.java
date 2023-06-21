@@ -8,11 +8,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.example.osg.entity.Role;
 import com.example.osg.entity.User;
 import com.example.osg.repository.RoleRepository;
 import com.example.osg.repository.UserRepository;
+import com.example.osg.service.FileStorageService;
 
 @Controller
 public class UserController {
@@ -22,6 +25,9 @@ public class UserController {
 	
 	@Autowired
 	private UserRepository userRepository;
+	
+	@Autowired
+	private FileStorageService storageService;
 	
 	@GetMapping("/signin")
 	public String getSignInPage() {
@@ -61,5 +67,26 @@ public class UserController {
 			return "signup";
 		}
 	}
-
+	
+	
+	@GetMapping("/image/new")
+	public String newProfileImage() {
+		return "upload";
+	}
+	
+	@PostMapping("/image-upload")
+	public String uploadProfileImage(@RequestParam("file") MultipartFile file, Model model) {
+		String message = "";
+		
+		try {
+			storageService.save(file);
+			message = "Upload image successfully: " + file.getOriginalFilename();
+			model.addAttribute("message", message);
+		} catch (Exception e) {
+			message = "Could not upload image:" + file.getOriginalFilename();
+			model.addAttribute("message", message);
+		}
+		
+		return "upload";
+	}
 }
